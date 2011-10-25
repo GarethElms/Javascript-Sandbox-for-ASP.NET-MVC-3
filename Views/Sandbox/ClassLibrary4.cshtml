@@ -1,0 +1,151 @@
+﻿
+@section Description
+{
+<p>Added extend() and include() methods to add static and instance functions. More like a "real" js library</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Class = function()
+{
+    var _class =
+        function( style)
+        {
+            this.style = style;
+        };
+
+    _class.fn = _class.prototype; // Shortcut for prototype for all instances of Class
+    _class.fn.parent = _class;    // Shortcut for the base Class from derived classes eg; Computer
+
+    // Extend the class with static properties
+    _class.addStaticMembers = 
+        function( obj)
+        {
+            for( var i in obj)
+            {
+                _class[i] = obj[i];
+            }
+        };
+
+    // include properties in all instances (ie; put properties in the prototype so all
+    // derived object have these methods
+    _class.addInstanceMembers =
+        function( obj)
+        {
+            for( var i in obj)
+            {
+                _class.fn[i] = obj[i];
+            }
+        }
+
+    return _class;
+};
+
+// Setup our base class
+var Computer = new Class();
+
+Computer.addStaticMembers(
+    {
+        find:
+            function( style)
+            {
+                for( var i=0, count=_computers.length; i<count; i++)
+                {
+                    if( _computers[i].style === style)
+                    {
+                        log( "find", "Found " + style);
+                        return _computers[i];
+                    }
+                }
+
+                log( "find", "Can't find " + style);
+                return null;
+            },
+        exists:
+            function( style)
+            {
+                // debugger //(are Computer and this the same here?)
+                if( Computer.find( style) == null)
+                {
+                    log( "exists", style + " doesn't exist");
+                    return false;
+                }
+
+                log( "exists", style + " exists");
+                return true;
+            },
+        remove:
+            function( computer)
+            {
+                for( var i=0, count=_computers.length; i<count; i++)
+                {
+                    if( _computers[i].style === computer.style)
+                    {
+                        log( "remove", "Removing " + computer.style);
+                        _computers.splice( i, 1);
+                        break;
+                    }
+                }
+            },
+        logAllComputers:
+            function()
+            {
+                log( 1, "logAllComputers", "");
+                for( var i=0, count=_computers.length; i<count; i++)
+                {
+                    _computers[i].log( 2);
+                }
+            }
+    });
+
+Computer.addInstanceMembers(
+    {
+        save:
+            function()
+            {
+                log( 1, "computer.save", "Saving " + this.style);
+                _computers.push( this);
+            },
+        log:
+            function( level)
+            {
+                var level = level || 1;
+                log( level, "computer.log", "[" + this.style + "]");
+            }
+    });
+
+var _computers = new Array();
+_computers.push( new Computer( "server"));
+_computers.push( new Computer( "notebook"));
+_computers.push( new Computer( "tablet"));
+
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logSection( "Create a new Computer and save it to the array of Computer objects");
+var myLaptop = new Computer( "laptop");
+log( 2, "myLaptop.style is '" + myLaptop.style + "'");
+myLaptop.save();
+Computer.logAllComputers();
+
+log();
+logSection( "Find my laptop in the list and remove it");
+var foundLaptop = Computer.find( "laptop");
+
+Computer.remove( foundLaptop);
+
+Computer.logAllComputers();
+
+Computer.exists( foundLaptop.style);
+
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_AlexMacCaw();
+}

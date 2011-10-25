@@ -1,0 +1,79 @@
+﻿@section Description
+{
+<p>For in is a simple language construct to loop through an object's properties</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var ThingWithColour = function( colour)
+{
+    this.colour = "";
+    this.setColour = function( colour)
+    {
+        this.colour = colour;
+    }
+};
+
+var Computer = function( style, colour)
+{
+    this.style = style;
+    this.setColour( colour);
+};
+
+Computer.prototype = new ThingWithColour();
+
+var myLaptop = new Computer( "laptop", "red");
+var myPc = new Computer( "desktop", "green");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "14em";
+logSection( "for( var key in myLaptop)");
+for( var key in myLaptop)
+{
+    log( "myLaptop." + key, myLaptop[key]);
+}
+
+log();
+logSection( "for( var key in myPc)");
+for( var key in myPc)
+{
+    log( "myPc." + key, myPc[key]);
+}
+
+log();
+log( "And now limiting each key to the parent object using the hasOwnProperty() function");
+log();
+logSection( "for( var key in myLaptop)");
+for( var key in myLaptop)
+{
+    if( myLaptop.hasOwnProperty( key))
+    {
+        log( "myLaptop." + key, myLaptop[key]);
+    }
+}
+
+log();
+logSection( "for( var key in myPc)");
+for( var key in myPc)
+{
+    if( myPc.hasOwnProperty( key))
+    {
+        log( "myPc." + key, myPc[key]);
+    }
+}
+
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNotes( "setColour() is in the ThingWithColour prototype so hasOwnProperty returns false on the two Computer objects");
+logNotes( "The propertyIsEnumerable() is available to all objects, and returns true for a property that will show up in a for..in loop");
+</script>
+}

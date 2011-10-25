@@ -1,0 +1,52 @@
+﻿
+@section Description
+{
+<p>Adding inheritance to the test class library</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Class =
+    function( parent)
+    {
+        var _class =
+            function()
+            {
+                this.init.apply( this, arguments);
+            };
+
+        if( parent)
+        {
+            var subClass = function() {};
+            subClass.prototype = parent.prototype; // Why don't we just say subClass.prototype = parent?
+
+            _class.prototype = new subClass;
+        }
+
+        _class.prototype.init = function() {};
+
+        // Shortcuts
+        _class.fn = _class.prototype;
+        _class.fn.parent = _class;
+        _class._super = _class.__proto__;
+
+        return _class;
+    };
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+var Animal = new Class;
+var Cat = new Class( Animal);
+
+var myPetCat = new Cat;
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

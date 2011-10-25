@@ -1,0 +1,37 @@
+﻿@section Description
+{
+<p>Any object created with the new operator can have its own instance properties added after creation</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var string1 = new String();
+var string2 = new String();
+var string3 = "Primitive string 1";           // Primitive
+var string4 = String( "Primitive string 2");  // Primitive
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+string1.customProperty = "hello1";
+string2.customProperty = "hello2";
+string3.customProperty = "Am I really primitive?";
+string4.customProperty = "Am I primitive too?";
+
+log( string1.customProperty + " <em>(" + typeof( string1.customProperty) + ")</em>");
+log( string2.customProperty + " <em>(" + typeof( string2.customProperty) + ")</em>");
+log( string3.customProperty + " <em>(" + typeof( string3.customProperty) + ")</em>");
+log( string4.customProperty + " <em>(" + typeof( string4.customProperty) + ")</em>");
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "Primitive objects can't have custom properties. The interpreter doesn't treat them as object.");
+logNote( "Also note that when an object is created it inherits any properties in its constructor chain too.");
+</script>
+}

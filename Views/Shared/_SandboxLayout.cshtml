@@ -1,0 +1,73 @@
+﻿@{
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="decsription">
+@RenderSection( "Description", false)
+</div>
+
+<fieldset>
+    <legend>Setup</legend>
+    <script type="syntaxhighlighter" class="brush: js" id="formattedScript_Setup"></script>
+</fieldset>
+
+<fieldset>
+    <legend>Test</legend>
+    <script type="syntaxhighlighter" class="brush: js" id="formattedScript_TestCode"></script>
+</fieldset>
+
+<div style="display:none;" id="javascript_Setup">
+@RenderSection( "Javascript_Setup", false)
+</div>
+
+<div style="display:none;" id="javascript_Test">
+@RenderSection( "Javascript_Test", false)
+</div>
+
+<div style="display:none;" id="notes">
+@RenderSection( "Notes", false)
+</div>
+
+<script type="text/javascript">
+$(document).ready(
+    function()
+    {
+        $("#formattedScript_Setup").text( "<![CDATA[" + $("#javascript_Setup script").html() + "]]>");
+        $("#formattedScript_TestCode").text( "<![CDATA[" + $("#javascript_Test script").html() + "]]>");
+
+        SyntaxHighlighter.all();
+
+        window.setTimeout(
+            function()
+            {
+                try
+                {
+                    eval( $("#javascript_Setup script").html());
+                }
+                catch( e) {logError( "Setup", e);}
+                
+                try
+                {
+                    eval( $("#javascript_Test script").html());
+                }
+                catch( e) {logError( "Test", e);}
+
+                try
+                {
+                    eval( $("#notes script").html());
+                }
+                catch( e) {logError( "Notes", e);}
+            },
+            500);
+    });
+</script>
+
+<fieldset>
+    <legend style="position:relative; top:5px; padding-bottom:10px;">Log</legend>
+    <div id="log"></div>
+    <div id="logNotes"></div>
+    <div id="errors"></div>
+    <div id="credits">
+        @RenderSection( "Credits", false)
+    </div>
+</fieldset>

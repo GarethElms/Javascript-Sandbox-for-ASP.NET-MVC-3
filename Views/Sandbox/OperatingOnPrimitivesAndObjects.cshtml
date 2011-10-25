@@ -1,0 +1,29 @@
+﻿@section Description
+{
+<p>If I have a primitive number and a new Number() object can I still perform arithmetic between them?</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var number1 = 100;
+var number2 = new Number( 200);
+var number3 = 200;
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "14em";
+log( "number1 + number2", (number1 + number2) + " <em>(typeof is " + typeof(number1 + number2) + ")</em>");
+log( "number1 + number3", (number1 + number3) + " <em>(typeof is " + typeof(number1 + number3) + ")</em>");
+log( "number2 + number3", (number2 + number3) + " <em>(typeof is " + typeof(number2 + number3) + ")</em>");
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+</script>
+}

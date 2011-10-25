@@ -1,0 +1,5 @@
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptWebApplication\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptWebApplication\bin\JavascriptWebApplication.dll
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptWebApplication\bin\JavascriptWebApplication.pdb
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptWebApplication\obj\Debug\JavascriptWebApplication.dll
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptWebApplication\obj\Debug\JavascriptWebApplication.pdb

@@ -1,0 +1,57 @@
+﻿@section Description
+{
+<p>Primitive types have more subtleties</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var number1 = 10;
+var number2 = 10;
+var number3 = new Number("10"); // This is a complex numberic object because new was used
+var number4 = number3;
+var number5 = Number("10");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "15em";
+logSection( "Comparing primitives with primitives and primitives with objects");
+log( "(number1 === number2)", (number1 === number2));
+log( "(number4 === number3)", (number4 === number3));
+log( "(number5 === number1)", (number5 === number1));
+
+// The condition result is blank when output?? Had to stringify...
+log( "(number1 === number3)", JSON.stringify( (number1 === number3)));
+
+ // ...same here, but I coerce it to a string instead
+log( "(number5 === number3)", "" + (number5 === number3));
+
+number4 = 10;
+log( "(number4 === number3)", JSON.stringify( (number4 === number3)));
+log();
+logSection( "If number1 is a primitive how can I call number1.toString()");
+log( "number1.tostring() == " + number1.toString());
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "Something weird happens when you compare a primitive number to an object number. " +
+            "The return value doesn't convert to a string?");
+logNote( "Primitives are compared by value, objects are compared by reference");
+logNote( "Primitives are stored as a direct value, objects are stored by reference; " +
+            "this explains how comparison works. C# is identical");
+logNote( "Primitives can be treated as if they are objects. For example Number() has toFixed() " +
+            "and toString() functions that you can access directly on a primitive number. " +
+            "The primitive is boxed at runtime similarly to C#. That's why number1.toString() works");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

@@ -1,0 +1,5 @@
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptSandbox\bin\JavascriptSandbox.dll
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptSandbox\bin\JavascriptSandbox.pdb
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptSandbox\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptSandbox\obj\Debug\JavascriptSandbox.dll
+E:\Users\Gareth\Documents\Code\dotNet\Research\JavascriptSandbox\obj\Debug\JavascriptSandbox.pdb

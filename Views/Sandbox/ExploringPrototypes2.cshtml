@@ -1,0 +1,60 @@
+﻿@section Description
+{
+<p>Use the power of the Javascript <strong>this</strong> scope to have instance properties in a shared prototype. I guess this is the way to do it anyway</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var PrototypeColour = function()
+    {
+        var base =
+        {
+            setColour: function( colour)
+            {
+                this.colour = colour;
+            }
+        };
+
+        return base;
+    };
+
+var Computer =
+    function( style, colour)
+    {
+        this.style = style;
+        this.setColour( colour);
+    };
+
+Computer.prototype = new PrototypeColour();
+
+var myLaptop = new Computer( "laptop", "black");
+var myPc = new Computer( "pc", "pink");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "14em";
+logSection( "Initial values of myLaptop");
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log();
+
+logSection( "Change the values");
+myLaptop.setColour( "white");
+myLaptop.style = "netbook";
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log();
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNotes( "This is how I overcame the static base class problem. You abstract the base property in a function and <em>this</em> is always set to the current object's scope.");
+logNotes( "Is this what they mean when they say <strong>\"Functions are how you share state in JavaScript\"</strong>");
+</script>
+}

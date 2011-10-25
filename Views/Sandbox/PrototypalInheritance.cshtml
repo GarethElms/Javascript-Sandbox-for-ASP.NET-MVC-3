@@ -1,0 +1,61 @@
+﻿@section Description
+{
+<p>How does prototypal inheritence work exactly?</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+
+// Create a base type PetAnimal
+var PetAnimal =
+    function()
+    {
+        log( "PetAnimal", "Creating a new PetAnimal");
+        this.name = "";
+    };
+
+PetAnimal.prototype.eat = 
+    function()
+    {
+        log( "PetAnimal", this.name + " is eating");
+    };
+
+// Create a Dog type that inherits from PetAnimal
+var Dog =
+    function( name)
+    {
+        log( "Dog", "Creating a new Dog called " + name);
+        this.name = name; // this.name is found in the prototype PetAnimal.
+    };
+Dog.prototype = new PetAnimal;
+
+// Dogs have specific abilities such as wagging their tails
+Dog.prototype.wagTail =
+    function()
+    {
+        log( "Dog", this.name + " is wagging his tail");
+    };
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+var bruno = new Dog( "Bruno");
+var gypsy = new Dog( "Gypsy");
+
+log();
+bruno.eat();
+bruno.wagTail();
+
+log();
+gypsy.eat();
+gypsy.wagTail();
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

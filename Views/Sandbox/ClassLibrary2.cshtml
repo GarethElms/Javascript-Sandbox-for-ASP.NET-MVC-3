@@ -1,0 +1,51 @@
+﻿
+@section Description
+{
+<p>Creating a class that returns a function which acts as a base class for the Person class (providing a base 'name' and init method)</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Class = function()
+{
+    var _class = function( style)
+    {
+        log( 2, "Class", "creating a new Computer");
+        this.style = style;
+        this.init.apply( this);
+    };
+
+    _class.prototype.init = function() {};
+
+    return _class;
+};
+
+log( 1, "Base Class defined");
+
+// Setup our base class which contains an init function in its prototype
+var Computer = new Class();
+
+log( 1, "Computer class instantiated");
+
+Computer.prototype.init = function()
+{
+    log( 2, "Computer", "calling init() on a Computer instance");
+}
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+log();
+logSection( "About to call : var myLaptop = new Computer( \"laptop\");");
+var myLaptop = new Computer( "laptop");
+log( 2, "myLaptop.style is '" + myLaptop.style + "'");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_AlexMacCaw();
+}

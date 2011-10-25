@@ -1,0 +1,73 @@
+﻿@section Description
+{
+<p>Object types are reference types. Does this extend to reference objects passed to a function?</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var gaz =
+{
+    name: "Gaz",
+    age: 37,
+    location: "Manchester, UK"
+};
+
+function changeLocationOfPerson( person, newLocation)
+{
+    person.location = newLocation;
+}
+
+var number = 1;
+function incrementNumber( number)
+{
+    number ++;
+}
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logSection( "Does the function change the original object?");
+log( "before", gaz.location);
+
+changeLocationOfPerson( gaz, "Bewdley, UK");
+
+log( "after", gaz.location);
+
+log();
+logSection( "And what about value objects treated like objects?");
+log( "before", number);
+
+incrementNumber( number);
+
+log( "after", number);
+
+log();
+logSection( "What if I create a new Number() instead.. this is an object right?... Nope!");
+var newNumber = new Number( "50");
+log( "before", newNumber);
+
+incrementNumber( newNumber);
+
+log( "after", newNumber);
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "Just like C# objects are passed by reference too. When you pass an object to a function " +
+            "you just pass the reference. The function doesn't receive a copy of the object, it " +
+            "receives a reference to the memory location where the object is stored.");
+logNote( "Value types (string, number and boolean) are passed by value. The original is untouched");
+logNote( "Value types can be treated like objects, and be instantiated as objects using new Number( \"50\") " +
+            "but Javascript ignores this subtelty. It's still a value type no matter what you try and do with it");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

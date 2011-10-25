@@ -1,0 +1,78 @@
+﻿@section Description
+{
+<p>Primitive types have some subtleties</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var primitiveBool1 = true;
+var primitiveBool2 = Boolean( true);
+var primitiveBool3 = new Boolean( true);
+
+var primitiveNumber1 = 123;
+var primitiveNumber2 = Number( 123);
+var primitiveNumber3 = new Number( 123);
+
+var primitiveString1 = "value 1";
+var primitiveString2 = String( "value 2");
+var primitiveString3 = new String( "value 3");
+
+var myFunction1 = function( x, y) {return x + y;};
+var myFunction2 = new Function( "x", "y", "return x + y");
+
+var myRegExp1 = new RegExp( "\\w+");
+var myRegExp2 = /\w+/; // Literal regular expression is enclosed in /
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logSection( "Use new and you'll get an object representing a primitive. Don't use new (or a literal) and " +
+            "you get a primitive value");
+log( "primitiveBool1", typeof( primitiveBool1));
+log( "primitiveBool2", typeof( primitiveBool2));
+log( "primitiveBool3", typeof( primitiveBool3));
+log();
+log( "primitiveNumber1", typeof( primitiveNumber1));
+log( "primitiveNumber2", typeof( primitiveNumber2));
+log( "primitiveNumber3", typeof( primitiveNumber3));
+log();
+log( "primitiveString1", typeof( primitiveString1));
+log( "primitiveString2", typeof( primitiveString2));
+log( "primitiveString3", typeof( primitiveString3));
+log()
+logSection( "A function is always a function though");
+log( "myFunction1", typeof( myFunction1));
+log( "myFunction2", typeof( myFunction2));
+log()
+logSection( "A RegExp is always an object it seems");
+log( "myRegExp1", typeof( myRegExp1));
+log( "myRegExp2", typeof( myRegExp2));
+log()
+
+var string1 = "string 1";
+var string2 = "string 2";
+string1 = "string 1 modified";
+logSection( "Primitives are copied by value ie; the value is copied into a new memory location, the " +
+                "opposite of copy by reference");
+log( "string1", string1);
+log( "string2", string2);
+
+var object1 = {name: "Gareth"};
+var object2 = object1;
+object1.name = "Nigel";
+log()
+logSection( "Objects are always copied by reference. If object2 = object1 and I change object1 " +
+            "then object2 changes. The variables are just pointer references");
+log( "object1", JSON.stringify( object1));
+log( "object2", JSON.stringify( object2));
+
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

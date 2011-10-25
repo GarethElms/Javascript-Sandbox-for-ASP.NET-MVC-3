@@ -1,0 +1,68 @@
+﻿@section Description
+{
+<p>The in operator and and hasOwnProperty() function are different</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var ThingWithColour = function( colour)
+{
+    this.colour = colour;
+    this.brightness = "normal";
+    this.setBrightness = function( brightness)
+    {
+        this.brightness = brightness;
+    }
+};
+
+var Computer = function( style, colour)
+{
+    this.style = style;
+    this.__proto__.colour = colour;
+    this.thing = new ThingWithColour( colour);
+};
+
+Computer.prototype = new ThingWithColour();
+
+var myLaptop = new Computer( "laptop", "red");
+var myPc = new Computer( "desktop", "green");
+myLaptop.setBrightness( "high");
+
+var myNumber = 100;
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "17em";
+logSection( "Given var Computer myLaptop...; Is the colour property known at runtime? Where is it?");
+log( "in myLaptop prototype chain", "colour" in myLaptop);
+log( "in Computer", myLaptop.hasOwnProperty( "colour"));
+log();
+logSection( "Is the style property known at runtime? Where is it?");
+log( "in myLaptop prototype chain", "style" in myLaptop);
+log( "in Computer", myLaptop.hasOwnProperty( "style"));
+log();
+logSection( "Is the setBrightness function known at runtime? Where is it?");
+log( "in myLaptop prototype chain", "setBrightness" in myLaptop);
+log( "in Computer", myLaptop.hasOwnProperty( "setBrightness"));
+log()
+log( "myLaptop.colour", myLaptop.colour);
+log( "myLaptop.setBrightness", myLaptop.setBrightness);
+log();
+log( "myNumber.toString()", myNumber.toString());
+log( "Is toString a member of the primitive myNumber variable? (throws exception)");
+log( "toString" in myNumber);
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNotes( "You can see how the colour property and setBrightness() function are found in the prototype chain in the ThingWithColour prototype");
+logNotes( "Also notice that the prototype ThingwithColour.colour property is effectively static; myLaptop.colour is \"green\" because that was the last value it was set to. Only prototype functions have the scope of the derived Computer object");
+logNotes( "Also notice how Javascript stops you from treating primitives like number sometimes... like when I ask \"toString in myNumber\"");
+</script>
+}

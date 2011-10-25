@@ -1,0 +1,103 @@
+﻿
+@section Description
+{
+<p>Add static Computer.find() and Computer.log() functions and an instance .save() function</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Class = function()
+{
+    var _class =
+        function( style)
+        {
+            log( 2, "Class", "creating a new Computer");
+            this.style = style;
+            this.init.apply( this);
+        };
+
+    _class.prototype.init = function() {};
+
+    return _class;
+};
+
+log( 1, "Base Class defined");
+
+// Setup our base class which contains an init function in its prototype
+var Computer = new Class();
+log( 1, "Computer class instantiated");
+
+var computers = new Array();
+computers.push( new Computer( "tablet"));
+computers.push( new Computer( "server"));
+computers.push( new Computer( "desktop"));
+
+Computer.find =
+    function( style)
+    {
+        log( 1, "Computer", "find('" + style + "')...");
+        // note: array.indexOf() only works in IE9 : http://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array
+        for( p in computers)
+        {
+            if( p.style === style)
+            {
+                log( 1, "Computer", "Found " + p.style);
+                return p;
+            }
+        }
+
+        log( 1, "Computer", style + " not found");
+        return null;
+    }
+
+Computer.log =
+    function()
+    {
+        for( var i=0, count=computers.length; i<count; i++)
+        {
+            log( 1, "[" + computers[i].style + "]");
+        }
+    }
+
+Computer.prototype.save =
+    function()
+    {
+        log( 1, "Saving " + this.style);
+        computers.push( this);
+    }
+
+Computer.prototype.init =
+    function()
+    {
+        log( 2, "calling init() on a Computer instance");
+    }
+
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+
+log();
+logSection( "The initial array of computers");
+Computer.log();
+log();
+
+logSection( "Add my laptop to the list of computers");
+log( 1, "About to call : var myLaptop = new Computer( \"laptop\");");
+var myLaptop = new Computer( "laptop");
+log( 2, "myLaptop.style is '" + myLaptop.style + "'");
+myLaptop.save();
+
+log();
+logSection( "The array of computers now");
+Computer.log();
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_AlexMacCaw();
+}

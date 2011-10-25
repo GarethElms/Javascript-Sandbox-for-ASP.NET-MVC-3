@@ -1,0 +1,52 @@
+﻿@section Description
+{
+<p>What happens when you call a constructor function without prefixing the <strong>new</strong> keyword?</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Computer =
+    function( style, ram, hd)
+    {
+        var result = 
+        {
+            style: style,
+            ram: ram,
+            hd: hd,
+            getStyle: function() {return this.style;}
+        };
+
+        return result;
+    };
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+var myLaptop = new Computer( "laptop", "2GB", "1TB");
+var myServer = Computer( "rackmount", "48GB", "2TB"); // returns nothing
+
+logSection( "The constructed computer objects");
+
+log( "My laptop", JSON.stringify( myLaptop))
+log( 2, "GetStyle()", myLaptop.getStyle());
+
+log( "My server", JSON.stringify( myServer) || "")
+log( 2, "GetStyle()", myServer.getStyle());
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "In this case you don't need to use <strong>new</strong> since you are returning " +
+         "the exact object you want to be returned.");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content( "~/content/syntax-highlighter/scripts/shCore.js")" type="text/javascript"></script>
+    <script src="@Url.Content( "~/content/syntax-highlighter/scripts/shBrushJScript.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/content/syntax-highlighter/styles/shCore.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/content/syntax-highlighter/styles/shThemeDefault.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<script type="text/javascript">
+//
+// level   : optional indent level for log output line
+// label   : optional label which is prefixed to the ouput line and emboldened
+// message : the message to log
+//
+// Examples :
+//      log( "message");
+//      log( "label", "message");
+//      log( 2, "indented message");
+//      log( 2, "label", "indented message");
+//
+function log( level, label, message)
+{
+    if( level == null && label == null && message == null)
+    {
+        $("#log").append( "<div style='height:10px;')" + "</div>");
+        return;
+    }
+
+    if( typeof( level) === "number")
+    {
+        if( typeof( message) === "undefined")
+        {
+            message = label;
+            label = "";
+        } 
+    }
+    else
+    {
+        // The level parameter hasn't been used. We've either got just a message
+        // or a label and a message
+        if( typeof( label) === "undefined")
+        {
+            label = "";
+            message = level;
+        }
+        else
+        {
+            message = label;
+            label = level;
+        }
+
+        level = 1;
+    }
+
+    if( label != "")
+    {
+        var style = "";
+        if( typeof( logLabelWidth) === "string")
+        {
+            style = "width:" + logLabelWidth + ";";
+        }
+
+        label = "<strong class='loglabel loglabel-" + level + "' style='" + style + "'>" + label + ": </strong>";
+    }
+
+    level = level - 1;
+
+    if( message === "")
+    {
+        message = "&#160;";
+    }
+    else if( message == null)
+    {
+        message = "";
+    }
+
+    $("#log").append( "<div style='margin-left:" + (level * 10) + "px'>" + (label || "") + message + "</div>");
+}
+
+function logSection( sectionDescription)
+{
+    $("#log").append( "<div class='logSection'>" + sectionDescription + "</div>");
+}
+
+function logNotes( note) {logNote( note);}
+function logNote( note)
+{
+    $("#logNotes").append( "<div class='note'>" + note + "</div>");
+}
+
+function logError( section, e)
+{
+    var message = e;
+    if( typeof( message) === "object")
+    {
+        message = message.toString();
+    }
+
+    $("#errors").append( "<div class='error'><strong>Error in " + section + " section: </strong>" + message + "</div>");
+}
+</script>
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1>How I learned JavaScipt</h1>
+            </div>
+
+            <div id="menucontainer">
+
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+        Thrown together by <a href="http://www.garethelms.org">Gareth Elms</a> who recommends <a href="http://jsfiddle.net">http://jsfiddle.net</a> <em>(unless you want to hack javascript with Intellisense in Visual Studio)</em>
+        </div>
+    </div>
+</body>
+</html>

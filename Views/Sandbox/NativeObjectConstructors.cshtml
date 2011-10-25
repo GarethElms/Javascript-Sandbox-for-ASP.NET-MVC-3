@@ -1,0 +1,98 @@
+﻿@section Description
+{
+<p>There are 9 native object constructors in Javascript and 5 native types. The native object constructors don't create the native types, they all create objects.</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var numberNew = new Number( 123);
+var stringNew = new String( "my string");
+var booleanNew = new Boolean( true);
+var objectNew = new Object( 101);
+var arrayNew = new Array( 1, "gaz", true, {animal:"monkey"});
+var funcNew = new Function( "a", "b", "c", "return ((a + b) - c)");
+var dateNew = new Date( 2011, 10, 22);
+var regexpNew = new RegExp( "\\w+");
+var errorNew = new Error( "error 1");
+
+var number = Number( 123);
+var string = String( "my string");
+var boolean = Boolean( true);
+var object = Object( 101);
+var array = Array( 1, "gaz", true, {animal:"monkey"});
+var func = Function( "a", "b", "c", "return ((a + b) - c)");
+var date = Date( 2011, 10, 22);
+var regexp = RegExp( "\\w+");
+var error = Error( "error 1");
+
+var literalNumber = 123;
+var literalString = "my literal string";
+var literalBoolean = true;
+var literalObject = {"name":"value"}
+var literalArray = [1,2,3,4,5];
+var literalfunc = function( a, b, c) {return ((a + b) - c);};
+
+// Not all native objects have literals: http://stackoverflow.com/questions/2504036/javascript-json-date-literal
+// var date = Date( 2011, 10, 22;)
+// var regexp = RegExp( "\\w+");
+// var error = Error( "error 1");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logSection( "The native object constructors - called with new");
+log( typeof( numberNew), number);
+log( typeof( stringNew), string);
+log( typeof( booleanNew), boolean);
+log( typeof( objectNew), object);
+log( typeof( arrayNew), array);
+log( typeof( funcNew), func);
+log( typeof( dateNew), date);
+log( typeof( regexpNew), regexp);
+log( typeof( errorNew), error);
+log();
+logSection( "The native object constructors - called without new");
+log( typeof( number), number);
+log( typeof( string), string);
+log( typeof( boolean), boolean);
+log( typeof( object), object);
+log( typeof( array), array);
+log( typeof( func), func);
+log( typeof( date), date);
+log( typeof( regexp), regexp);
+log( typeof( error), error);
+log();
+logSection( "Even creating literal values still uses the object constructors");
+log( "literalNumber", literalNumber.constructor);
+log( "literalString", literalString.constructor);
+log( "literalBoolean", literalBoolean.constructor);
+log( "literalObject", literalObject.constructor);
+log( "literalArray", literalArray.constructor);
+log( "literalfunc", literalfunc.constructor);
+log()
+log( "literalNumber", typeof(literalNumber));
+log( "literalString", typeof(literalString));
+log( "literalBoolean", typeof(literalBoolean));
+log( "literalObject", typeof(literalObject));
+log( "literalArray", typeof(literalArray));
+log( "literalfunc", typeof(literalfunc));
+</script>
+}
+
+@section Notes
+{
+<script type="test/javascript">
+logNote( "There's no escaping the object constructors. Literal instantiations is syntactic sugar. " +
+            "Actually the 3 primitives (number, string, boolean) are value types and are temporarily boxed " +
+            "in an object when they are treated as one eg; var number = 12; 12.toString(); // 12 is still a " +
+            "number and can't be referenced");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

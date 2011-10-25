@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<p>I'm working through some JavaScript books and used the code samples to help learn JavaScript</p>
+
+<h3 title="This book gets complicated quickly, I recommend reading Javascript Enlightenemnt first">JavaScript Web Applications by Alex MacCaw</h3>
+<ul>
+    <li>
+        @Html.SandboxLink( "ClassLibrary1", "Initial Person class library")
+    </li>
+    <li>
+        @Html.SandboxLink( "ClassLibrary2", "Initial Person class library with base class")
+    </li>
+    <li>
+        @Html.SandboxLink( "ClassLibrary3", "Static functions and instance functions")
+    </li>
+    <li>
+        @Html.SandboxLink( "ClassLibrary4", "extend() and include() methods to add static and instance functions")
+    </li>
+</ul>
+
+<h3 title="A perfectly pitched book for me at this stage. All the core points of Javascript are covered expertly">Javascript Enlightenment by Cody Lindley</h3>
+<ul>
+   <li>
+        @Html.SandboxLink( "PrototypalInheritance", "How does Javascript give us inheritance?")
+    </li>
+    <li>
+        @Html.SandboxLink( "NativeObjectConstructors", "The 9 native object constructors")
+    </li>
+    <li>
+        @Html.SandboxLink( "DifferenceBetweenNewAndNotNew", "What happens when you don't use new when calling a constructor function?")
+    </li>
+    <li>
+        @Html.SandboxLink( "AlternativeToNew", "You can make a constructor function return an object instead of using new and this")
+    </li>
+    <li>
+        @Html.SandboxLink( "PrimitivesLesson1", "Primitives (strings, numbers and booleans) have some subtleties")
+    </li>
+    <li>
+        @Html.SandboxLink( "PrimitivesLesson2", "Primitives have even more subtleties")
+    </li>
+    <li>
+        @Html.SandboxLink( "ObjectReferences", "Nailing object references")
+    </li>
+    <li>
+        @Html.SandboxLink( "CustomConstructors", "Accessing a custom constructor from a derived object")
+    </li>
+    <li>
+        @Html.SandboxLink( "CustomPropertiesOnObjects", "Objects created with the new operator can have their own custom properties afterwards")
+    </li>
+    <li>
+        @Html.SandboxLink( "OperatingOnPrimitivesAndObjects", "Can I still perform arithmetic between a primitive number and a new Number()")
+    </li>
+    <li>
+        @Html.SandboxLink( "ExploringPrototypes1", "Exploring Prototypes 1 : Looking at the prototype chain and delete")
+    </li>
+    <li>
+        @Html.SandboxLink( "ExploringPrototypes2", "Exploring Prototypes 2 : Can I solve the 'static prototype' issue I found in Exploring Prototypes 1")
+    </li>
+    <li>
+        @Html.SandboxLink( "DifferenceBetweenInAndHasOwnProperty", "What is the difference between the in operator and hasOwnProperty()?")
+    </li>
+    <li>
+        @Html.SandboxLink( "for-in", "the for..in construct goes through the entire prototype chain of an object, returning each key")
+    </li>
+</ul>

@@ -1,0 +1,70 @@
+﻿@section Description
+{
+<p>Exploring prototypes as "base classes" and I realised that the prototype is a single instance of an object. Prototype properties are shared between instances</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var ThingWithColour = function( colour)
+{
+    this.colour = colour;
+};
+
+var Computer = function( style, colour)
+{
+    this.style = style;
+    this.__proto__.colour = colour;
+    this.thing = new ThingWithColour( colour);
+};
+
+Computer.prototype = new ThingWithColour();
+
+var myLaptop = new Computer( "laptop", "black");
+var myPc = new Computer( "pc", "pink");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "14em";
+logSection( "Initial values of myLaptop");
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.thing.colour", myLaptop.thing.colour + "<em>(" + typeof( myLaptop.thing.colour) + ")</em>");
+log();
+
+logSection( "Change the values");
+myLaptop.colour = "white";
+myLaptop.style = "netbook";
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.thing.colour", myLaptop.thing.colour + "<em>(" + typeof( myLaptop.thing.colour) + ")</em>");
+log();
+
+logSection( "Can I delete the style property?");
+delete myLaptop.style;
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.thing.colour", myLaptop.thing.colour + "<em>(" + typeof( myLaptop.thing.colour) + ")</em>");
+log();
+
+logSection( "The colour property is inherited from the ThingWithColour prototype. Can I delete it?");
+delete myLaptop.colour;
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.thing.colour", myLaptop.thing.colour + "<em>(" + typeof( myLaptop.thing.colour) + ")</em>");
+log( "done");
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "Notice that the prototype ThingWithColour() is shared between myLaptop and myPc. When I setup myPc it sets the referenced Computer prototype colour to pink. So myLaptop becomes pink too.");
+logNote( "The way around this is simple; create a new ThingWithColour() for every Computer that is created; <em>this.thing = new ThingWithColour( colour);</em>");
+logNote( "What is the point of a prototype if it is shared? It's like having a static parent shared between all derived instances. It's not right that.");
+logNote( "Perhaps the point is that you can have static functions in the prototype. Calling </em>this.property</em> in the prototype function will work because the scope is correctly defined");
+</script>
+}

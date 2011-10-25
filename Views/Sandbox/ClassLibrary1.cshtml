@@ -1,0 +1,29 @@
+﻿@section Description
+{
+<p>Creating a simple class with a single property</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Computer = function( style)
+{
+    this.style = style;
+};
+
+// Instantiate Computer
+var myLaptop = new Computer( "laptop");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+log( "myLaptop.style is '" + myLaptop.style + "'");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_AlexMacCaw();
+}

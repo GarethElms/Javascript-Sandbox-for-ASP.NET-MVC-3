@@ -1,0 +1,69 @@
+﻿@section Description
+{
+<p>An object always has a reference to the constructor function that created it. This
+even applies to primitive values. The instanceof operator is a helper that compares
+the object's constructor with a known constructor function</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Computer = function Computer( style) {this.style = style;};
+var AnonConstructor = function( name) {this.name = name;};
+var number = 100;
+var notNewNumber = Number( 200);
+var newNumber = new Number( 300);
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "18em";
+var myLaptop = new Computer( "laptop");
+var pencil = new AnonConstructor( "pencil");
+
+logSection( "What are these objects' constructors?");
+log( "myLaptop.constructor", myLaptop.constructor);
+log( "pencil.constructor", pencil.constructor);
+log( "number.constructor", number.constructor);
+log( "constructedNumber.constructor", notNewNumber.constructor);
+log( "newNumber.constructor", newNumber.constructor);
+log()
+
+logSection( "myLaptop");
+log( "instanceof Computer", myLaptop instanceof Computer);
+log( "instanceof AnonConstructor", myLaptop instanceof AnonConstructor);
+log( "instanceof Number", myLaptop instanceof Number);
+log( "instanceof Object", myLaptop instanceof Object);
+log();
+logSection( "pencil");
+log( "instanceof Computer", pencil instanceof Computer);
+log( "instanceof AnonConstructor", pencil instanceof AnonConstructor);
+log( "instanceof Number", pencil instanceof Number);
+log( "instanceof Object", pencil instanceof Object);
+log();
+logSection( "number");
+log( "instanceOf Number", number instanceof Number);
+log( "instanceOf Object", number instanceof Object);
+log();
+logSection( "notNewNumber");
+log( "instanceOf Number", notNewNumber instanceof Number);
+log( "instanceOf Object", notNewNumber instanceof Object);
+log();
+logSection( "newNumber");
+log( "instanceOf Number", newNumber instanceof Number);
+log( "instanceOf Object", newNumber instanceof Object);
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "All objects and primitives are instances of Object");
+logNote( "Numbers created using <strong>new</strong> are instances of the Number constructor. Number created without new " +
+            "are not instances of Number. It's the same with the other primitives; string and boolean. " +
+            "The instanceof operator only works with objects created by using new");
+
+</script>
+}

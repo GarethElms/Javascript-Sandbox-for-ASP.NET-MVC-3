@@ -1,0 +1,50 @@
+﻿@section Description
+{
+<p>What happens when you call a constructor function without prefixing the <strong>new</strong> keyword?</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var Computer =
+    function( style, ram, hd)
+    {
+        this.style = style;
+        this.ram = ram;
+        this.hd = hd;
+        this.getStyle = function() {return this.style;};
+    };
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+var myLaptop = new Computer( "laptop", "4GB", "500GB");
+var myServer = Computer( "server", "48GB", "2TB"); // returns nothing
+
+logSection( "The constructed Computers");
+log( "myLaptop", JSON.stringify( myLaptop))
+log( "myServer", JSON.stringify( myServer) || "")
+log();
+
+logSection( "What happened to myServer? It's at global window scope because we didn't use <strong>new</strong>.");
+log( "window.style = " + window.style);
+log( "window.ram = " + window.ram);
+log( "window.hd = " + window.hd);
+log( "window.getStyle = " + window.getStyle);
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNote( "Without the </em>new</em> keyword an object constructor may as well be inline code rather than " +
+         "a function call. <em>this</em> isn't set to a new object nor returned.");
+</script>
+}
+
+@section Credits
+{
+    @Html.Credit_CodyLindley()
+}

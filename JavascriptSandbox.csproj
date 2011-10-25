@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2883371-A295-4F04-9E11-F735060575B9}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JavascriptSandbox</RootNamespace>
+    <AssemblyName>JavascriptSandbox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SandboxController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\HtmlHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\UrlHelper.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\syntax-highlighter\scripts\shAutoloader.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushAppleScript.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushAS3.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushBash.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushColdFusion.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushCpp.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushCSharp.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushCss.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushDelphi.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushDiff.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushErlang.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushGroovy.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushJava.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushJavaFX.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushJScript.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushPerl.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushPhp.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushPlain.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushPowerShell.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushPython.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushRuby.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushSass.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushScala.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushSql.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushVb.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shBrushXml.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shCore.js" />
+    <Content Include="Content\syntax-highlighter\scripts\shLegacy.js" />
+    <Content Include="Content\syntax-highlighter\src\shAutoloader.js" />
+    <Content Include="Content\syntax-highlighter\src\shCore.js" />
+    <Content Include="Content\syntax-highlighter\src\shLegacy.js" />
+    <Content Include="Content\syntax-highlighter\styles\shCore.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreDefault.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreDjango.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreEclipse.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreEmacs.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreFadeToGrey.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreMDUltra.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreMidnight.css" />
+    <Content Include="Content\syntax-highlighter\styles\shCoreRDark.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeDefault.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeDjango.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeEclipse.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeEmacs.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeFadeToGrey.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeMDUltra.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeMidnight.css" />
+    <Content Include="Content\syntax-highlighter\styles\shThemeRDark.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sandbox\ClassLibrary1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\syntax-highlighter\compass\config.rb" />
+    <None Include="Content\syntax-highlighter\compass\shCore.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreDefault.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreDjango.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreEclipse.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreEmacs.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreFadeToGrey.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreMDUltra.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreMidnight.scss" />
+    <None Include="Content\syntax-highlighter\compass\shCoreRDark.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeDefault.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeDjango.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeEclipse.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeEmacs.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeFadeToGrey.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeMDUltra.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeMidnight.scss" />
+    <None Include="Content\syntax-highlighter\compass\shThemeRDark.scss" />
+    <None Include="Content\syntax-highlighter\compass\_theme_template.scss" />
+    <None Include="Content\syntax-highlighter\LGPL-LICENSE" />
+    <None Include="Content\syntax-highlighter\MIT-LICENSE" />
+    <Content Include="Views\Sandbox\ClassLibrary2.cshtml" />
+    <Content Include="Views\Shared\_SandboxLayout.cshtml" />
+    <Content Include="Views\Sandbox\_ViewStart.cshtml" />
+    <Content Include="Views\Sandbox\ClassLibrary3.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Sandbox\ClassLibrary4.cshtml" />
+    <Content Include="Views\Sandbox\PrototypalInheritance.cshtml" />
+    <Content Include="Views\Sandbox\ClassLibrary_Inheritance.cshtml" />
+    <Content Include="Views\Sandbox\_blank.cshtml" />
+    <Content Include="Views\Sandbox\NativeObjectConstructors.cshtml" />
+    <Content Include="Views\Sandbox\DifferenceBetweenNewAndNotNew.cshtml" />
+    <Content Include="Views\Sandbox\AlternativeToNew.cshtml" />
+    <Content Include="Views\Sandbox\PrimitivesLesson1.cshtml" />
+    <Content Include="Views\Sandbox\PrimitivesLesson2.cshtml" />
+    <Content Include="Views\Sandbox\ObjectReferences.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55109</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
