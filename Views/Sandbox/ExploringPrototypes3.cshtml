@@ -1,0 +1,57 @@
+﻿@section Description
+{
+<p>Object and function <strong>retrieval</strong> goes through the prototype chain but assignment goes straight onto the object you're operating on</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+var PrototypeColour =
+    function( colour)
+    {
+        // var colour; // This would effectively be a static property, shared between all instances
+        this.colour = colour || "";
+    };
+
+var Computer =
+    function( style, colour)
+    {
+        this.style = style;
+        this.__proto__.colour = colour;
+    };
+
+Computer.prototype = new PrototypeColour();
+
+var myLaptop = new Computer( "laptop", "black");
+var myPc = new Computer( "pc", "pink");
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "18em";
+logSection( "Initial values of myLaptop");
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.__proto__.colour", myLaptop.__proto__.colour + "<em>(" + typeof( myLaptop.__proto__.colour) + ")</em>");
+log();
+
+logSection( "Change the values");
+myLaptop.colour = "white";
+myLaptop.style = "netbook";
+log( "myLaptop.style", myLaptop.style + "<em>(" + typeof( myLaptop.style) + ")</em>");
+log( "myLaptop.colour", myLaptop.colour + "<em>(" + typeof( myLaptop.colour) + ")</em>");
+log( "myLaptop.__proto__.colour", myLaptop.__proto__.colour + "<em>(" + typeof( myLaptop.__proto__.colour) + ")</em>");
+log();
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+logNotes( "See how myLaptop.__proto__.colour is still pink... That's because myLaptop.__proto__ resolves to the single instance of PrototypeColour. No <em>this</em> scope is passed into the PrototypeColour instance because we are accessing a property directly");
+logNotes( "So that's that. Theonly way to make a base object share state with derived objects is to have set() functions on properties accessed with <strong>this</strong>");
+logNotes( "This test just confirms my findings in <a href=\"/sandbox/ExploringPrototypes2\">/sandbox/ExploringPrototypes2</a>");
+</script>
+}

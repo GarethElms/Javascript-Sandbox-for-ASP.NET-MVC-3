@@ -1,0 +1,28 @@
+﻿@section Description
+{
+<p>Depending on your Javascript host environment different host objects will be available. Browsers have a host object called <strong>window</strong></p>
+<p>The <strong>window</strong> host object is not where the Javascript type constructors are stored eg; Array(), Number(). Native objects are not hosted objects</p>
+}
+
+@section Javascript_Setup
+{
+<script type="text/javascript">
+</script>
+}
+
+@section Javascript_Test
+{
+<script type="text/javascript">
+logLabelWidth = "30em";
+for( var p in window)
+{
+    log( "window[\"" + p + "\"]", typeof( window[p]));
+}
+</script>
+}
+
+@section Notes
+{
+<script type="text/javascript">
+</script>
+}
